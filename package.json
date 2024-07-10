@@ -11,9 +11,11 @@
   },
   "jest": {
     "jest": {
-    "testEnvironment": "jest-environment-jsdom",
-    "testMatch": ["**/src/exercises/**/*.test.js"]
-  }
+      "testEnvironment": "jest-environment-jsdom",
+      "testMatch": [
+        "**/src/exercises/**/*.test.js"
+      ]
+    }
   },
   "author": "",
   "license": "ISC",
