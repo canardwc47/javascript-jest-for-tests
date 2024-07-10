@@ -18,14 +18,32 @@ getWeather();
 
 
 export const fetchData = async () => {
-    // Your code here: Implement an API request (e.g., fetch data from a fictional API).
-  };
-  
-  // script.js
-  import { fetchData } from './ex4';
-  
-  function displayData() {
-    // Your code here: Fetch and display data from the API using fetchData.
+  const api_url = 'https://jsonplaceholder.typicode.com/posts/1'; // URL fictive pour les tests
+
+  try {
+    const response = await fetch(api_url);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Fetch error: ', error);
+    return null;
   }
+};
   
-  document.addEventListener('DOMContentLoaded', displayData);
+ // script.js
+import { fetchData } from './ex4';
+
+async function displayData() {
+  const data = await fetchData();
+  if (data) {
+    const displayElement = document.getElementById('data-display');
+    displayElement.textContent = JSON.stringify(data);
+  } else {
+    console.log('No data to display');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', displayData);
